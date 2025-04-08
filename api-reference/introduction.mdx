@@ -1,33 +1,43 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: "钱包即服务 WaaS API 文档"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+<h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">API 通用描述</h2>
+<p>所有请求参数必须组装成 <strong>JSON 格式</strong> 的请求体，并使用 <strong>RSA 公钥</strong> 对整个 JSON 请求体加密。将加密后的数据进行 <strong>Base64 编码</strong>，然后将 Base64 编码后的数据作为 <code>data</code> 参数提交给 API 接口。</p>
 
-## Welcome
+<h2 style="font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem;">支持币种</h2>
+<div style="margin-bottom: 1.5rem;">
+    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;">USDT</h3>
+    <ul>
+        <li>TRC20 - <span style="color: green; font-weight: bold;">支持</span></li>
+        <li>ERC20 - <span style="color: green; font-weight: bold;">支持</span></li>
+        <li>BEP20 - <span style="color: orange; font-weight: bold;">开发中</span></li>
+    </ul>
+</div>
+<div style="margin-bottom: 1.5rem;">
+    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;">PHT</h3>
+    <ul>
+        <li>TRC20 - <span style="color: green; font-weight: bold;">支持</span></li>
+        <li>ERC20 - <span style="color: green; font-weight: bold;">支持</span></li>
+    </ul>
+</div>
+<div style="margin-bottom: 1.5rem;">
+    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 0.5rem;">USDC</h3>
+    <ul>
+        <li>ERC20 - <span style="color: orange; font-weight: bold;">开发中</span></li>
+    </ul>
+</div>
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+<h2 style="font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem;">钱包地址格式约定</h2>
+<ul>
+    <li><strong>TRON：</strong>钱包地址中字母区分大小写。</li>
+    <li><strong>ETH：</strong>钱包地址中字母统一使用小写。</li>
+</ul>
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
-
-## Authentication
-
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
-
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
-```
+<h2 style="font-size: 1.5rem; font-weight: bold; margin-top: 2rem; margin-bottom: 1rem;">风险评分参考</h2>
+<ul>
+    <li><strong>低风险：</strong> 0 ~ 30，无风险或低风险。</li>
+    <li><strong>中风险：</strong> 31 ~ 64，可能与中高风险地址有过交易。</li>
+    <li><strong>高风险：</strong> 65 ~ 84，与中高风险地址有过交易，建议做隔离。</li>
+    <li><strong>严重风险：</strong> 85 ~ 100，与高危风险地址有过交易，建议立即隔离。</li>
+</ul>
